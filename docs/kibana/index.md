@@ -8,7 +8,7 @@ has_toc: false
 
 # Kibana
 
-Kibana is the default visualization tool for data in Elasticsearch. It also serves as a user interface for the Open Distro for Elasticsearch [Security plugin](../security-configuration/).
+Kibana is the default visualization tool for data in Elasticsearch. It also serves as a user interface for the Open Distro for Elasticsearch [Security](../security-configuration/) and [Alerting](../alerting/) plugins.
 
 
 ## Run Kibana using Docker
@@ -52,6 +52,48 @@ sudo /bin/systemctl enable kibana.service
 ```
 
 You can also modify the values in `/etc/kibana/kibana.yml`.
+
+
+## Run Kibana using the tarball
+
+1. Download the tarball:
+
+   ```bash
+   curl https://d3g5vo6xdbdb9a.cloudfront.net/tarball/opendistroforelasticsearch-kibana/opendistroforelasticsearch-kibana-1.2.0.tar.gz -o opendistroforelasticsearch-kibana-1.2.0.tar.gz
+   ```
+
+1. Download the checksum:
+
+   ```bash
+   curl https://d3g5vo6xdbdb9a.cloudfront.net/tarball/opendistroforelasticsearch-kibana/opendistroforelasticsearch-kibana-1.2.0.tar.gz.sha512 -o opendistroforelasticsearch-kibana-1.2.0.tar.gz.sha512
+   ```
+
+1. Verify the tarball against the checksum:
+
+   ```bash
+   shasum -a 512 -c opendistroforelasticsearch-kibana-1.2.0.tar.gz.sha512
+   ```
+
+   On CentOS, you might not have `shasum`. Install this package:
+
+   ```bash
+   sudo yum install perl-Digest-SHA
+   ```
+
+1. Extract the TAR file to a directory and change to that directory:
+
+   ```bash
+   tar -zxf opendistroforelasticsearch-kibana-1.2.0.tar.gz
+   cd opendistroforelasticsearch-kibana
+   ```
+
+1. If desired, modify `config/kibana.yml`.
+
+1. Run Kibana:
+
+   ```bash
+   ./bin/kibana
+   ```
 
 
 ## Get started with Kibana

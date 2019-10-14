@@ -9,7 +9,7 @@ nav_order: 3
 
 Field-level security lets you control which document fields a user can see. Just like [document-level security](../document-level-security/), you control access by index within a role.
 
-The easiest way to get started with document- and field-level security is open Kibana and choose **Security**. Then choose **Roles**, create a new role, and choose **DLS/FLS**.
+The easiest way to get started with document- and field-level security is open Kibana and choose **Security**. Then choose **Roles**, create a new role, and choose **Index Permissions**.
 
 ---
 
@@ -68,13 +68,13 @@ You can specify field-level security settings using Kibana, `roles.yml`, and the
 - To exclude fields in `roles.yml` or the REST API, add `~` before the field name.
 - Field names support wildcards (`*`).
 
-  For example `~*sensitive` excludes all fields that end in `sensitive`. `public*` includes all fields that begin with `public`.
+  Wildcards are especially useful for excluding *subfields*. For example, if you index a document that has a string (e.g. `{"title": "Thor"}`), Elasticsearch creates a `title` field of type `text`, but it also creates a `title.keyword` subfield of type `keyword`. In this example, to prevent unauthorized access to data in the `title` field, you must also exclude the `title.keyword` subfield. Use `title*` to match all fields that begin with `title`.
 
 
 ### Kibana
 
-1. Choose a role and **DLS/FLS**.
-1. Choose an index.
+1. Choose a role and **Index Permissions**.
+1. Choose an index pattern.
 1. Under **Include or exclude fields**, use the drop-down to select your preferred option. Then specify one or more fields and **Save Role Definition**.
 
 
