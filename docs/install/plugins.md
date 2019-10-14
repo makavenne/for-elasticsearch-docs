@@ -30,6 +30,12 @@ If you don't want to use the all-in-one Open Distro for Elasticsearch installati
   </thead>
   <tbody>
     <tr>
+      <td>7.3.2</td>
+      <td>
+        <pre></pre>
+      </td>
+    </tr>
+    <tr>
       <td>7.2.0</td>
       <td>
         <pre>opendistro-job-scheduler        1.2.0
