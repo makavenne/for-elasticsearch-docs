@@ -52,6 +52,7 @@ PUT _opendistro/_ism/policies/<policy-id>
 {
    "policy":{
       "name":"ingesting logs",
+      "description":"policy managing index rollover"
       "schema_version":1,
       "default_state":"ingest",
       "states":[
@@ -79,7 +80,7 @@ PUT _opendistro/_ism/policies/<policy-id>
                {
                   "state_name":"delete",
                   "conditions":{
-                     "index_age":"5m"
+                     "min_index_age":"5m"
                   }
                }
             ]
